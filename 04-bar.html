@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    />
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #3e14bc;
+      color: #fff;
+      padding: 10px 20px;
+    }
+    .logo {
+      font-size: 24px;
+    }
+    ul {
+      display: flex;
+      list-style: none;
+    }
+    li {
+      margin-left: 20px;
+    }
+    a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 18px;
+    }
+    a:hover {
+      color: #ddd;
+    }
+    .Menu-icon {
+      display: none;
+      cursor: pointer;
+    }
+    .Menu-icon i {
+      color: #fff;
+      font-size: 20px;
+    }
+    body {
+      width: 100%;
+      height: 100%;
+      background-color: #000000;
+    }
+    @media (max-width: 568px) {
+      .navbar ul {
+        display: block;
+        position: absolute;
+        top: 40px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        text-align: center;
+        background: #3e14bc;
+        gap: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+      }
+      ul li {
+        padding: 20px;
+      }
+      .Menu-icon {
+        display: block;
+      }
+      .Menu-icon.open {
+        cursor: pointer;
+      }
+
+      .bar {
+        display: block;
+        width: 28px;
+        height: 3px;
+        margin: 5px auto;
+        background-color: #fff;
+        transition: all 0.3s ease;
+      }
+      .Menu-icon.open .bar:nth-child(1) {
+        transform: rotate(45deg) translateY(11px);
+      }
+      .Menu-icon.open .bar:nth-child(2) {
+        opacity: 0;
+      }
+      .Menu-icon.open .bar:nth-child(3) {
+        transform: rotate(-45deg) translateY(-11px);
+      }
+    }
+    #mark-icon {
+      display: none;
+    }
+  </style>
+  <body>
+    <div class="navbar">
+      <div class="logo">Navbar</div>
+      <ul id="navbar-menu">
+        <li>
+          <a href="#">Home</a>
+        </li>
+        <li>
+          <a href="#">About</a>
+        </li>
+        <li>
+          <a href="#">Services</a>
+        </li>
+        <li>
+          <a href="#">Features</a>
+        </li>
+        <li>
+          <a href="#">Contacts</a>
+        </li>
+      </ul>
+      <div class="Menu-icon" onclick="togglerMenu()">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
+
+    <script>
+      let navbarMenu = document.getElementById("navbar-menu");
+      let farbar = document.querySelector(".Menu-icon");
+
+      navbarMenu.style.maxHeight = "0px";
+
+      function togglerMenu() {
+        const isOpen = navbarMenu.style.maxHeight == "400px";
+        if (!isOpen) {
+          navbarMenu.style.maxHeight = "400px";
+          farbar.classList.add("open");
+        } else {
+          navbarMenu.style.maxHeight = "0px";
+          farbar.classList.remove("open");
+        }
+      }
+    </script>
+  </body>
+</html>
